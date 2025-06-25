@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&family=Fira+Code:wght@300;400;500;600&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme */
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --surface-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-foreground: #ffffff;
+}
+
+.theme-dark {
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-hover: #334155;
+  --border: #475569;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --primary: #60a5fa;
+  --primary-hover: #3b82f6;
+  --primary-foreground: #1e293b;
+}
+
+.theme-sepia {
+  --background: #fdf6e3;
+  --surface: #f4f0e3;
+  --surface-hover: #eee8d5;
+  --border: #d6cc9a;
+  --text-primary: #5d4e37;
+  --text-secondary: #8b7355;
+  --primary: #b58900;
+  --primary-hover: #9d7600;
+  --primary-foreground: #fdf6e3;
+}
+
+.theme-contrast {
+  --background: #000000;
+  --surface: #1a1a1a;
+  --surface-hover: #333333;
+  --border: #666666;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --primary: #ffff00;
+  --primary-hover: #cccc00;
+  --primary-foreground: #000000;
+}
+
+/* Font families */
+.font-inter {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-merriweather {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+.font-fira {
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+
+.font-opensans {
+  font-family: 'Open Sans', system-ui, sans-serif;
+}
+
+/* Custom utilities */
+@layer utilities {
+  .bg-background {
+    background-color: var(--background);
+  }
+  
+  .bg-surface {
+    background-color: var(--surface);
+  }
+  
+  .bg-surface-hover {
+    background-color: var(--surface-hover);
+  }
+  
+  .border-border {
+    border-color: var(--border);
+  }
+  
+  .text-text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  
+  .bg-primary-hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .text-primary {
+    color: var(--primary);
+  }
+  
+  .text-primary-foreground {
+    color: var(--primary-foreground);
+  }
+  
+  .border-primary {
+    border-color: var(--primary);
+  }
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Custom animations */
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(234, 179, 8, 0.6), 0 0 40px rgba(234, 179, 8, 0.3);
+  }
+}
+
+@keyframes thinking-dots {
+  0%, 20% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-thinking-dots {
+  animation: thinking-dots 1.5s ease-in-out infinite;
+}
+
+/* Enhanced loading state */
+.thinking-indicator {
+  position: relative;
+}
+
+.thinking-indicator::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.1) 0%, transparent 70%);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Glowing effect for the lightbulb */
+.glow-yellow {
+  filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6));
+}
